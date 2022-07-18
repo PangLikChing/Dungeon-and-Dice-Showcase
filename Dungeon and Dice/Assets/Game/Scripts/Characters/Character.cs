@@ -38,7 +38,7 @@ public abstract class Character : MonoBehaviour
     }
 
     // Method to let the character take damage
-    public virtual void TakeDamage(int damage, Character source)
+    public virtual void TakeDamage(Character source, int damage)
     {
         // If the character is dead already
         if (currentHealth <= 0)

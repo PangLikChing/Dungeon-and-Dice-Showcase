@@ -23,7 +23,7 @@ public class Player : Character
         GameManager.Instance.AddPlayer(this);
     }
 
-    public override void TakeDamage(int damage, Character source)
+    public override void TakeDamage(Character source, int damage)
     {
         // If the player is dead already
         if (currentHealth <= 0)
@@ -36,7 +36,7 @@ public class Player : Character
         }
 
         // Go though the base code from character
-        base.TakeDamage(damage, source);
+        base.TakeDamage(source, damage);
 
         // See if the player is dead
         if (currentHealth <= 0)
