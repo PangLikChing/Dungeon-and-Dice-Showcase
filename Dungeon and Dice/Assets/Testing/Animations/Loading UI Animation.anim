@@ -125,7 +125,24 @@ AnimationClip:
     path: Loading Text Text (TMP)
     classID: 114
     script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: d9d6260af10898942b58a4e16b771e0c, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 130e16a7e8c3a3e41b27c40f3c721d9d, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: cfc794c4ba5d6c44cbb33b1e330c38b1, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 32f6b18d28545594d9cccd1fab961152, type: 3}
+    - time: 1.3333334
+      value: {fileID: 21300000, guid: 89a95a23774184e43a77e5d22f8a4d1d, type: 3}
+    - time: 1.6666666
+      value: {fileID: 21300000, guid: c91295194429c6f438427ab4646d00ab, type: 3}
+    attribute: m_Sprite
+    path: Loading Wheel Image
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -154,7 +171,20 @@ AnimationClip:
       typeID: 114
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - serializedVersion: 2
+      path: 4091253368
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: d9d6260af10898942b58a4e16b771e0c, type: 3}
+    - {fileID: 21300000, guid: 130e16a7e8c3a3e41b27c40f3c721d9d, type: 3}
+    - {fileID: 21300000, guid: cfc794c4ba5d6c44cbb33b1e330c38b1, type: 3}
+    - {fileID: 21300000, guid: 32f6b18d28545594d9cccd1fab961152, type: 3}
+    - {fileID: 21300000, guid: 89a95a23774184e43a77e5d22f8a4d1d, type: 3}
+    - {fileID: 21300000, guid: c91295194429c6f438427ab4646d00ab, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

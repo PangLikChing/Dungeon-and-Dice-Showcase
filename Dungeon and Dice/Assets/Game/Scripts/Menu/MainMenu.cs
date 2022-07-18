@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainMenu : Menu
 {
-    [Tooltip("Reference to pause menu")]
-    public MenuClassifier pauseMenu;
+    //[Tooltip("Reference to pause menu")]
+    //public MenuClassifier pauseMenu;
     [Tooltip("Reference to hud menu")]
     public MenuClassifier hudMenu;
     [Tooltip("Reference to the scene that storges gameplay persistance data")]
