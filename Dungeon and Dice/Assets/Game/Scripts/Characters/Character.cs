@@ -27,18 +27,31 @@ public abstract class Character : MonoBehaviour
     [Tooltip("Raise this when a character's shield needs to be updated")]
     public UnityEvent<Character, int> UpdateCharacterShield;
 
+    // Method to let the character to attack a target
+    public virtual void Attack(Character target, int damage)
+    {
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} is dealing {damage} damage to {target.name}!");
+
+        // Deal damage to the target
+        target.TakeDamage(damage, this);
+    }
+
     // Method to let the character take damage
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, Character source)
     {
         // If the character is dead already
         if (currentHealth <= 0)
         {
+            // Throw a debug message
+            Debug.Log($"{gameObject.name} is dead already!");
+
             // Ignore the take damage request
             return;
         }
 
         // Throw a debug message
-        Debug.Log($"{gameObject.name} is taking {damage} damage!");
+        Debug.Log($"{gameObject.name} is taking {damage} damage from {source.name}!");
 
         // Reduce from shield first
         if (shield > 0)

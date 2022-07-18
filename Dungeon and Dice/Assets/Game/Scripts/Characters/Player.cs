@@ -18,19 +18,25 @@ public class Player : Character
         maximumHealth = playerStats.maximumHealth;
         currentHealth = maximumHealth;
         shield = 0;
+
+        // Add this player into Game Manager's playerList
+        GameManager.Instance.AddPlayer(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, Character source)
     {
         // If the player is dead already
         if (currentHealth <= 0)
         {
+            // Throw a debug message
+            Debug.Log($"{gameObject.name} is dead already!");
+
             // Ignore the take damage request
             return;
         }
 
         // Go though the base code from character
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, source);
 
         // See if the player is dead
         if (currentHealth <= 0)
@@ -45,5 +51,8 @@ public class Player : Character
     {
         // Throw a debug message
         Debug.Log("Player is dead!");
+
+        // Remove this player from the player list in the Game Manager
+        GameManager.Instance.RemovePlayer(this);
     }
 }

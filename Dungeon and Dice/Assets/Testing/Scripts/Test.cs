@@ -13,11 +13,11 @@ public class Test : MonoBehaviour
     void Start()
     {
         // Test
-        enemy.ChangeShield(8);
-        enemy.TakeDamage(5);
-        enemy.TakeDamage(5);
-        enemy.TakeDamage(5);
-        enemy.TakeDamage(999);
+        player.ChangeShield(8);
+        enemy.Attack(player, 5);
+        enemy.Attack(player, 5);
+        enemy.Attack(player, 10);
+        enemy.Attack(player, 999);
         // Test
     }
 }

@@ -18,19 +18,25 @@ public class Enemy : Character
         maximumHealth = enemyStats.maximumHealth;
         currentHealth = maximumHealth;
         shield = 0;
+
+        // Add this enemy into Game Manager's enemyList
+        GameManager.Instance.AddEnemy(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, Character source)
     {
         // If the enemy is dead already
         if (currentHealth <= 0)
         {
+            // Throw a debug message
+            Debug.Log($"{gameObject.name} is dead already!");
+
             // Ignore the take damage request
             return;
         }
 
         // Go though the base code from character
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, source);
 
         // See if the enemy is dead
         if (currentHealth <= 0)
@@ -45,5 +51,8 @@ public class Enemy : Character
     {
         // Throw a debug message
         Debug.Log("Enemy is dead!");
+
+        // Remove this enemy from the enemy list in the Game Manager
+        GameManager.Instance.RemoveEnemy(this);
     }
 }
