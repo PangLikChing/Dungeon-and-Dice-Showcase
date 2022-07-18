@@ -2,6 +2,7 @@ using Project.Build.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// An abstract class for all characters in the game
@@ -9,14 +10,22 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [Header("Stats")]
-    [Tooltip("Attack of the character")]
+    [Tooltip("Current attack of the character")]
     [SerializeField][ReadOnly] protected int attack = 0;
-    [Tooltip("Maximum health of the character")]
+    [Tooltip("Current maximum health of the character")]
     [SerializeField] [ReadOnly] protected int maximumHealth = 0;
     [Tooltip("Current health that the character currently has")]
     [SerializeField][ReadOnly] protected int currentHealth = 0;
-    [Tooltip("Shield that the character currently has")]
+    [Tooltip("Current shield that the character currently has")]
     [SerializeField][ReadOnly] protected int shield = 0;
+    [Tooltip("Raise this when a character's attack needs to be updated")]
+    public UnityEvent<Character, int> UpdateCharacterAttack;
+    [Tooltip("Raise this when a character's current health needs to be updated")]
+    public UnityEvent<Character, int> UpdateCharacterCurrentHealth;
+    [Tooltip("Raise this when a character's maximum health needs to be updated")]
+    public UnityEvent<Character, int> UpdateCharacterMaximumHealth;
+    [Tooltip("Raise this when a character's shield needs to be updated")]
+    public UnityEvent<Character, int> UpdateCharacterShield;
 
     // Method to let the character take damage
     public virtual void TakeDamage(int damage)
@@ -47,7 +56,7 @@ public abstract class Character : MonoBehaviour
                 int healthDamage = damage - shield;
 
                 // Deplete all the shields
-                shield = 0;
+                ChangeShield(-shield);
 
                 // Reduce the current health by health damage
                 ChangeCurrentHealth(-healthDamage);
@@ -59,6 +68,22 @@ public abstract class Character : MonoBehaviour
             // Reduce the current health by health damage
             ChangeCurrentHealth(-damage);
         }
+    }
+
+    // Method to change current attack (can be increase or decrease)
+    public virtual void ChangeCurrentAttack(int amount)
+    {
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} is changing {amount} amount of attack!");
+
+        // Change the attack by the amount
+        attack += amount;
+
+        // Tell the others that my attack changed
+        UpdateCharacterAttack.Invoke(this, attack);
+
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} has {attack} attack now!");
     }
 
     // Method to change current health (can be increase or decrease)
@@ -79,6 +104,9 @@ public abstract class Character : MonoBehaviour
             // Change that amount of health
             currentHealth += amount;
         }
+
+        // Tell the others that my current health changed
+        UpdateCharacterCurrentHealth.Invoke(this, currentHealth);
 
         // Throw a debug message
         Debug.Log($"{gameObject.name} has {currentHealth} health with {shield} shield remaining!");
@@ -107,6 +135,12 @@ public abstract class Character : MonoBehaviour
             currentHealth = maximumHealth;
         }
 
+        // Tell the others that my current health changed
+        UpdateCharacterCurrentHealth.Invoke(this, currentHealth);
+
+        // Tell the others that my maximum health changed
+        UpdateCharacterMaximumHealth.Invoke(this, maximumHealth);
+
         // Throw a debug message
         Debug.Log($"{gameObject.name} has {currentHealth} health with {maximumHealth} amount of maximum health!");
     }
@@ -119,6 +153,9 @@ public abstract class Character : MonoBehaviour
 
         // Change the shield by the amount
         shield += amount;
+
+        // Tell the others that my shield changed
+        UpdateCharacterShield.Invoke(this, shield);
 
         // Throw a debug message
         Debug.Log($"{gameObject.name} has {currentHealth} health with {shield} shield remaining!");

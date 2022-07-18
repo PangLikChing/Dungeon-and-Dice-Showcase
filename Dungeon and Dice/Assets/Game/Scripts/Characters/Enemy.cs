@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The base clase for all enemies in the game
+/// </summary>
 public class Enemy : Character
 {
     [Header("Enemy")]
+    [Tooltip("Stats scriptable object to determine the enemy's starting stats")]
     [SerializeField] Stats enemyStats;
 
     void Awake()

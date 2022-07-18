@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The base clase for all players in the game
+/// </summary>
 public class Player : Character
 {
     [Header("Player")]
+    [Tooltip("Stats scriptable object to determine the player's starting stats")]
     [SerializeField] Stats playerStats;
 
     void Awake()
