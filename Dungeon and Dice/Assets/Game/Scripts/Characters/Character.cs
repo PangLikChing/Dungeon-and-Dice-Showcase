@@ -34,7 +34,7 @@ public abstract class Character : MonoBehaviour
         Debug.Log($"{gameObject.name} is dealing {damage} damage to {target.name}!");
 
         // Deal damage to the target
-        target.TakeDamage(damage, this);
+        target.TakeDamage(this, damage);
     }
 
     // Method to let the character take damage
