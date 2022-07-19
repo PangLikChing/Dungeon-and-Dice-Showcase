@@ -5,25 +5,75 @@ using UnityEngine;
 /// <summary>
 /// Script for dice's behaviour
 /// </summary>
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class Dice : MonoBehaviour
 {
-    [Tooltip("The Sprite Renderer of this die")]
-    SpriteRenderer spriteRenderer;
+    [Tooltip("The Animator of this die")]
+    Animator animator;
+    [Tooltip("Is this die rolling")]
+    bool isRolling = false;
+    [Tooltip("Timer for keeping track of when this die should change a side to display")]
+    float changeSideTimePassed = 0.0f;
 
+    [Tooltip("The number display's Sprite Renderer of this die")]
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [Tooltip("How long will the result get rolled")]
+    [SerializeField] float rollingTime = 0.0f;
+    [Tooltip("How long will the face of the dice change during rolling")]
+    [SerializeField] float changeSideTime = 0.0f;
     [Tooltip("All the faces of the die")]
-    [SerializeField] Transform[] faces;
+    [SerializeField] Sprite[] faces;
 
     void Start()
     {
         // Initialize
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        isRolling = false;
+
+        // If there are at least 1 face in faces
+        try
+        {
+            // Randomize a face
+            spriteRenderer.sprite = faces[Random.Range(0, faces.Length)];
+        }
+        catch
+        {
+            // Throw a debug message
+            Debug.Log("There is no faces added");
+        }
+    }
+
+    void Update()
+    {
+        if (isRolling == true)
+        {
+            // If it is not time to change the side display yet
+            if (changeSideTimePassed < changeSideTime)
+            {
+                // Increment the change side timer by real time passed
+                changeSideTimePassed += Time.deltaTime;
+            }
+            // If it is time to change the side display
+            else
+            {
+                // Change the sprite to a random sprite
+                spriteRenderer.sprite = faces[Random.Range(0, faces.Length)];
+
+                // Reset the change side timer
+                changeSideTimePassed = 0;
+            }
+        }
     }
 
     // Method to roll the die
     public void RollDie()
     {
-        // Roll the die and get the result
+        // Roll the die
+        StartCoroutine(Rolling());
+    }
+
+    private void GetRollResult()
+    {
         // This result will have a minus 1 because there is no die with 0 on it
         int rollResult = Random.Range(0, faces.Length);
 
@@ -33,12 +83,30 @@ public class Dice : MonoBehaviour
         try
         {
             // Change the sprite to match the roll result
-            spriteRenderer.sprite = faces[rollResult].GetChild(0).GetComponent<SpriteRenderer>().sprite;
+            spriteRenderer.sprite = faces[rollResult];
         }
         catch
         {
             // Throw a debug message
             Debug.Log("There is no sprite randerer on the die face prefeb!");
         }
+    }
+
+    IEnumerator Rolling()
+    {
+        // Start the rolling "animation"
+        isRolling = true;
+        animator.SetTrigger("Rolling");
+
+        // Wait for the rolling time specified
+        yield return new WaitForSeconds(rollingTime);
+
+        // Stop rolling
+        isRolling = false;
+        animator.SetTrigger("Idle");
+        transform.rotation = Quaternion.identity;
+
+        // Get the result
+        GetRollResult();
     }
 }
