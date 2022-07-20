@@ -77,7 +77,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (transform.parent.GetComponent<DropHandler>() == null)
         {
             // Return to the original parent before drag
-            transform.parent = originalParent;
+            transform.SetParent(originalParent);
+
+            // If the original parent is a dropping field
+            if (originalParent.GetComponent<DropHandler>() != null)
+            {
+                // Tell the original parent that this object returned
+                originalParent.GetComponent<DropHandler>().heldObject = transform;
+            }
 
             // Return to the original position before drag
             transform.position = originalPosition;

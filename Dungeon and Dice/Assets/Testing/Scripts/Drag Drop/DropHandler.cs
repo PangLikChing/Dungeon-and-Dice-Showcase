@@ -11,7 +11,7 @@ public class DropHandler : MonoBehaviour, IDropHandler
 {
     [Header("Drop Handler")]
     [Tooltip("The object transform that this dropping field is currently holding")]
-    /*[HideInInspector] */public Transform heldObject = null;
+    [HideInInspector] public Transform heldObject = null;
 
     public virtual void OnDrop(PointerEventData eventData)
     {

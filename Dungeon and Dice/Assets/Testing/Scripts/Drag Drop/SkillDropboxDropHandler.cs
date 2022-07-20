@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// A class to handle dice dropboxes' drag drop behaviour
+/// A class to handle skill dropboxes' drop behaviour
 /// </summary>
-public class DiceDropboxDropHandler : DropHandler
+public class SkillDropboxDropHandler : DropHandler
 {
     public override void OnDrop(PointerEventData eventData)
     {
