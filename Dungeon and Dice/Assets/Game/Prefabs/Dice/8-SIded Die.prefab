@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6993471035806276756}
   - component: {fileID: 900218098460691124}
   - component: {fileID: 900218098460691123}
+  - component: {fileID: 1856292105394936688}
+  - component: {fileID: 1214702448427106070}
   m_Layer: 0
   m_Name: 8-SIded Die
   m_TagString: Untagged
@@ -110,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomStart: 1
+  dieSize: 2
   image: {fileID: 2161691601993807551}
   rollingTime: 5
   changeSideTime: 0.1
@@ -122,6 +125,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16ee3d46d17cf2c4cb36c8144268d5ca, type: 3}
   - {fileID: 21300000, guid: 9e17255d0ba810f42a2be99e8cc4cc96, type: 3}
   - {fileID: 21300000, guid: f6c22578422bcd54f8fc20d8aa142638, type: 3}
+--- !u!225 &1856292105394936688
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900218098460691122}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1214702448427106070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900218098460691122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e16d16e0336cc143898df4364649dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900218099105229828
 GameObject:
   m_ObjectHideFlags: 0

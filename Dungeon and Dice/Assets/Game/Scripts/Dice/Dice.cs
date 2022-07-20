@@ -20,6 +20,8 @@ public class Dice : MonoBehaviour
     [SerializeField] bool randomStart = true;
 
     [Header("Data")]
+    [Tooltip("Die size of this die")]
+    [SerializeField] DieSize dieSize;
     [Tooltip("The number display's Image of this die")]
     [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
@@ -29,6 +31,15 @@ public class Dice : MonoBehaviour
     [Tooltip("All the faces of the die")]
     [SerializeField] Sprite[] faces;
 
+    public enum DieSize
+    {
+        D4,
+        D6,
+        D8,
+        D10,
+        D12,
+        D20
+    };
     void Start()
     {
         // Initialize
