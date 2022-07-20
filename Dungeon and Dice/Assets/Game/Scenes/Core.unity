@@ -754,7 +754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartupScene:
     sceneAsset: {fileID: 102900000, guid: b8b9f25396ce1294e87403c02037a72e, type: 3}
-    scenePath: Assets/Testing/Scenes/Main Menu.unity
+    scenePath: Assets/Game/Scenes/Main Menu.unity
     sceneName: Main Menu
   ShowMainMenu: 1
   MainMenuClassifier: {fileID: 11400000, guid: 4d159ceec68dd664086abef2d88b84e1, type: 2}

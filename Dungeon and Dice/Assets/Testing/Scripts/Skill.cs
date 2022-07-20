@@ -71,9 +71,12 @@ public class Skill : MonoBehaviour
     }
 
     // Method to use the skill
+    // TODO : Change this to accept para later (Character source, Character target, int amount)
     public void ExecuteSkill()
     {
         // Throw a debug message
-        Debug.Log($"Executing skill: {skillNameText}");
+        Debug.Log($"Executing skill: {skillNameText.text}");
+
+        // TODO : Calculate the amount needed for executing here
     }
 }

@@ -37,6 +37,26 @@ public abstract class Character : MonoBehaviour
         target.TakeDamage(this, damage);
     }
 
+    // Method to let the character to heal a target
+    public virtual void Heal(Character target, int healing)
+    {
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} is providing {healing} points of healing to {target.name}!");
+
+        // Heal the target
+        target.TakeHealing(this, healing);
+    }
+
+    // Method to let the character to shield a target
+    public virtual void Shield(Character target, int shielding)
+    {
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} is providing {shielding} points of shielding to {target.name}!");
+
+        // Heal the target
+        target.TakeShielding(this, shielding);
+    }
+
     // Method to let the character take damage
     public virtual void TakeDamage(Character source, int damage)
     {
@@ -81,6 +101,40 @@ public abstract class Character : MonoBehaviour
             // Reduce the current health by health damage
             ChangeCurrentHealth(-damage);
         }
+    }
+
+    // Method to let the character take healing
+    public virtual void TakeHealing(Character source, int healing)
+    {
+        // If the character is dead already
+        if (currentHealth <= 0)
+        {
+            // Throw a debug message
+            Debug.Log($"{gameObject.name} is dead already!");
+
+            // Ignore the take healing request
+            return;
+        }
+
+        // Increase current health, cannot exceed maximum
+        ChangeCurrentHealth(healing);
+    }
+
+    // Method to let the character take healing
+    public virtual void TakeShielding(Character source, int shielding)
+    {
+        // If the character is dead already
+        if (currentHealth <= 0)
+        {
+            // Throw a debug message
+            Debug.Log($"{gameObject.name} is dead already!");
+
+            // Ignore the take shielding request
+            return;
+        }
+
+        // Increase shield
+        ChangeShield(shielding);
     }
 
     // Method to change current attack (can be increase or decrease)
