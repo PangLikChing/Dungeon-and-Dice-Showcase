@@ -16,6 +16,10 @@ public class Dice : MonoBehaviour
     [Tooltip("Timer for keeping track of when this die should change a side to display")]
     float changeSideTimePassed = 0.0f;
 
+    [Tooltip("Should this die have a random face on start")]
+    [SerializeField] bool randomStart = true;
+
+    [Header("Data")]
     [Tooltip("The number display's Image of this die")]
     [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
@@ -31,16 +35,20 @@ public class Dice : MonoBehaviour
         animator = GetComponent<Animator>();
         isRolling = false;
 
-        // If there are at least 1 face in faces
-        try
+        // If the die should have a random starting face
+        if (randomStart == true)
         {
-            // Randomize a face
-            image.sprite = faces[Random.Range(0, faces.Length)];
-        }
-        catch
-        {
-            // Throw a debug message
-            Debug.Log("There is no faces added");
+            // If there are at least 1 face in faces
+            try
+            {
+                // Randomize a face
+                image.sprite = faces[Random.Range(0, faces.Length)];
+            }
+            catch
+            {
+                // Throw a debug message
+                Debug.Log("There is no faces added");
+            }
         }
     }
 

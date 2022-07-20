@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9bbbe21bc9ae4f968d46854f3fd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomStart: 1
   image: {fileID: 5528237603560220376}
   rollingTime: 5
   changeSideTime: 0.1
