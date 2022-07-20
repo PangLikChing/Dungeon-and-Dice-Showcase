@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Script for dice's behaviour
 /// </summary>
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Image), typeof(Animator))]
 public class Dice : MonoBehaviour
 {
     [Tooltip("The Animator of this die")]
