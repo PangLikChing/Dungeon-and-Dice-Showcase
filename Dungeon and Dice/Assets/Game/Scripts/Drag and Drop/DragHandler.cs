@@ -82,8 +82,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             // If the original parent is a dropping field
             if (originalParent.GetComponent<DropHandler>() != null)
             {
-                // Tell the original parent that this object returned
-                originalParent.GetComponent<DropHandler>().heldObject = transform;
+                // If the dropping field can only hold an object at a time
+                if (originalParent.GetComponent<DropHandler>().multipleHeldObjects == false)
+                {
+                    // Tell the original parent that this object returned
+                    originalParent.GetComponent<DropHandler>().heldObject = transform;
+                }
             }
 
             // Return to the original position before drag

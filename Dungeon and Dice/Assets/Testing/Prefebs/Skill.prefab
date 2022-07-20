@@ -184,6 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillData: {fileID: 0}
   dieSize: 0
+  numberOfDie: 1
+  currentSkillLevel: 1
   skillNameText: {fileID: 1615473324161524858}
   skillDesriptionText: {fileID: 1615473323622852131}
 --- !u!1 &1615473324161524860
@@ -408,4 +410,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a426a1026a5dbe648994677fcce70b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multipleHeldObjects: 0
   heldObject: {fileID: 0}
