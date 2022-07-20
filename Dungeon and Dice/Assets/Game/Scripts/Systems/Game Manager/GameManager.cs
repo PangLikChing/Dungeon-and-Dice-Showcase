@@ -12,10 +12,10 @@ public class GameManager : Singleton<GameManager>
     [Tooltip("An empty game object for the enemies instantiated to help organise the hierarchy")]
     [SerializeField] Transform enemiesParent;
     [Header("Data")]
-    [Tooltip("List of active players")]
-    [SerializeField] List<Player> playerList;
+    [Tooltip("List of active players, there should only be 1 player most of the time")]
+    [ReadOnly] public List<Player> playerList;
     [Tooltip("List of active enemies")]
-    [SerializeField] List<Enemy> enemyList;
+    [ReadOnly] public List<Enemy> enemyList;
     [Tooltip("The current encounter")]
     [ReadOnly] public Encounter currentEncounter;
     [Tooltip("Current encounter's win condition")]

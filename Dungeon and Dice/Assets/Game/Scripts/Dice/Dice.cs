@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Script for dice's behaviour
@@ -15,8 +16,8 @@ public class Dice : MonoBehaviour
     [Tooltip("Timer for keeping track of when this die should change a side to display")]
     float changeSideTimePassed = 0.0f;
 
-    [Tooltip("The number display's Sprite Renderer of this die")]
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [Tooltip("The number display's Image of this die")]
+    [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
     [SerializeField] float rollingTime = 0.0f;
     [Tooltip("How long will the face of the dice change during rolling")]
@@ -34,7 +35,7 @@ public class Dice : MonoBehaviour
         try
         {
             // Randomize a face
-            spriteRenderer.sprite = faces[Random.Range(0, faces.Length)];
+            image.sprite = faces[Random.Range(0, faces.Length)];
         }
         catch
         {
@@ -57,7 +58,7 @@ public class Dice : MonoBehaviour
             else
             {
                 // Change the sprite to a random sprite
-                spriteRenderer.sprite = faces[Random.Range(0, faces.Length)];
+                image.sprite = faces[Random.Range(0, faces.Length)];
 
                 // Reset the change side timer
                 changeSideTimePassed = 0;
@@ -83,7 +84,7 @@ public class Dice : MonoBehaviour
         try
         {
             // Change the sprite to match the roll result
-            spriteRenderer.sprite = faces[rollResult];
+            image.sprite = faces[rollResult];
         }
         catch
         {
