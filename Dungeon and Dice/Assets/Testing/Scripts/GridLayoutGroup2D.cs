@@ -30,7 +30,7 @@ public class GridLayoutGroup2D : MonoBehaviour
     private void PositionObjects()
     {
         // Initialize a temp float to keep track of the total distance of the child game objects
-        float totalDistance = 0;
+        float totalDistance = 0.0f;
 
         // If the game objects should go along the x-axis
         if (axis == Axis.x)
@@ -42,7 +42,7 @@ public class GridLayoutGroup2D : MonoBehaviour
                 transform.GetChild(i).position = Vector2.zero;
 
                 // Calculate the new position for the game object
-                transform.GetChild(i).position = new Vector2(totalDistance, transform.GetChild(i).position.y);
+                transform.GetChild(i).position = new Vector2(transform.position.x + totalDistance + transform.GetChild(i).localScale.x / 2, transform.position.y + transform.GetChild(i).position.y);
 
                 // Calculate how far should the next game object start from the origin
                 totalDistance += transform.GetChild(i).localScale.x + spacing;
@@ -58,7 +58,7 @@ public class GridLayoutGroup2D : MonoBehaviour
                 transform.GetChild(i).position = Vector2.zero;
 
                 // Calculate the new position for the game object
-                transform.GetChild(i).position = new Vector2(transform.GetChild(i).position.x, totalDistance);
+                transform.GetChild(i).position = new Vector2(transform.position.x + transform.GetChild(i).position.x, transform.position.y + totalDistance + transform.GetChild(i).localScale.y / 2);
 
                 // Calculate how far should the next game object start from the origin
                 totalDistance += transform.GetChild(i).localScale.y + spacing;
