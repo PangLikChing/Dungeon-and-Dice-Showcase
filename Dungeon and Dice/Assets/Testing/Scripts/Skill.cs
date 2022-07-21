@@ -13,7 +13,7 @@ public class Skill : MonoBehaviour
     [Tooltip("Starting skill data for this skill")]
     [SerializeField] SkillData skillData;
     [Tooltip("Die size for this skill")]
-    [SerializeField][ReadOnly] Dice.DieSize dieSize;
+    [ReadOnly] public Dice.DieSize dieSize;
     [Tooltip("Number of die for damage for this skill")]
     [SerializeField][ReadOnly] int numberOfDie = 1;
     [Tooltip("Current skill level for this skill")]
