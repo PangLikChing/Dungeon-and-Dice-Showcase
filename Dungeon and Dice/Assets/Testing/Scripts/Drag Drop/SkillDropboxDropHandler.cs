@@ -13,34 +13,42 @@ public class SkillDropboxDropHandler : DropHandler
         // Execute the base DropHandler class's code
         base.OnDrop(eventData);
 
-        try
+        // If the dropped object is a dice
+        if (eventData.pointerDrag.GetComponent<Dice>() != null)
         {
-            // Get a reference to the parent's skill component
-            Skill skill = transform.parent.GetComponent<Skill>();
+            try
+            {
+                // Get a reference to the parent's skill component
+                Skill skill = transform.parent.GetComponent<Skill>();
 
-            // If the current encounter is a battle
-            if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
-            {
-                // Execute the skill
-                skill.ExecuteSkill();
+                // If the current encounter is a battle
+                if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
+                {
+                    // Execute the skill
+                    skill.ExecuteSkill();
+                }
+                // If the current encounter is a rest event
+                else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
+                {
+                    // If the die size of the dropped object and the skill matches
+                    if (eventData.pointerDrag.GetComponent<Dice>().dieSize == skill.dieSize)
+                    {
+                        // Upgrade the skill
+                        skill.UpgradeSkill();
+                    }
+                }
+                // Else
+                else
+                {
+                    // Throw a debug message
+                    Debug.Log("Unknown encounter type!");
+                }
             }
-            // If the current encounter is a rest event
-            else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
-            {
-                // Upgrade the skill
-                skill.UpgradeSkill();
-            }
-            // Else
-            else
+            catch
             {
                 // Throw a debug message
-                Debug.Log("Unknown encounter type!");
+                Debug.Log("My parent is not a skill");
             }
-        }
-        catch
-        {
-            // Throw a debug message
-            Debug.Log("My parent is not a skill");
         }
     }
 }

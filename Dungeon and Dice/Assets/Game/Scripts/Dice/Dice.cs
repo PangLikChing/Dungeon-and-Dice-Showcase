@@ -21,7 +21,7 @@ public class Dice : MonoBehaviour
 
     [Header("Data")]
     [Tooltip("Die size of this die")]
-    [SerializeField] DieSize dieSize;
+    public DieSize dieSize;
     [Tooltip("The number display's Image of this die")]
     [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
