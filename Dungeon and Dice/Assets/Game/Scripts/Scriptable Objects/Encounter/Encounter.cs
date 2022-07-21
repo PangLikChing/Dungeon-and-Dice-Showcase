@@ -7,7 +7,5 @@ using UnityEngine;
 /// </summary>
 public class Encounter : ScriptableObject
 {
-    [Header("Encounter")]
-    [Tooltip("Reward for the player after completing this encounter")]
-    public Reward reward;
+    //[Header("Encounter")]
 }
