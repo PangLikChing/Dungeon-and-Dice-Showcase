@@ -24,14 +24,18 @@ public class SkillDropboxDropHandler : DropHandler
                 // Execute the skill
                 skill.ExecuteSkill();
             }
-            // temp
-            // If the current encounter is not a battle
-            else
+            // If the current encounter is a rest event
+            else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
             {
                 // Upgrade the skill
                 skill.UpgradeSkill();
             }
-            // temp
+            // Else
+            else
+            {
+                // Throw a debug message
+                Debug.Log("Unknown encounter type!");
+            }
         }
         catch
         {

@@ -17,6 +17,6 @@ public class TestEncounter : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.StartEncounter(battle);
+        GameManager.Instance.StartEncounter(encounter);
     }
 }

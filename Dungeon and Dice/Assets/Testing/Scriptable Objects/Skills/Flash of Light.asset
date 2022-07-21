@@ -17,3 +17,13 @@ MonoBehaviour:
   skillLevel:
   - diceNumber: 1
     dieSize: 1
+  - diceNumber: 1
+    dieSize: 2
+  - diceNumber: 1
+    dieSize: 3
+  - diceNumber: 2
+    dieSize: 1
+  - diceNumber: 2
+    dieSize: 2
+  - diceNumber: 2
+    dieSize: 3

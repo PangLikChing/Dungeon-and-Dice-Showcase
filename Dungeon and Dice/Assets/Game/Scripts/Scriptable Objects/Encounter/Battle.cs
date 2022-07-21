@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Scriptable object to store the starting data of a battle encounter
 /// </summary>
-[CreateAssetMenu(fileName = "Battle Encounter", menuName = "Encounter/Battle")]
+[CreateAssetMenu(fileName = "Battle Encounter", menuName = "Encounter/Encounters/Battle")]
 public class Battle : Encounter
 {
     [Header("Battle")]
@@ -15,6 +15,8 @@ public class Battle : Encounter
     public Enemy[] enemies;
     [Tooltip("Enemy index / indices needed to be defeated in the battle")]
     public int[] winCondition;
+    [Tooltip("Reward for the player after completing this encounter")]
+    public Reward reward;
 
     public enum Difficulty
     {
