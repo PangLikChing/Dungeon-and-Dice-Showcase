@@ -1996,7 +1996,7 @@ PrefabInstance:
     - target: {fileID: 1615473323688994323, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
       propertyPath: skillData
       value: 
-      objectReference: {fileID: 11400000, guid: 9e68f7fcd7a5a7f48b0943a58cf62dcb, type: 2}
+      objectReference: {fileID: 11400000, guid: 38e1ef92da001bb46b373e49b126c2fc, type: 2}
     - target: {fileID: 1615473323688994324, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
       propertyPath: m_RootOrder
       value: 3
