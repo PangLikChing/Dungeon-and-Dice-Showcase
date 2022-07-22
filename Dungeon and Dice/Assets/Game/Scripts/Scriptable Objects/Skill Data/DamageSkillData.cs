@@ -9,13 +9,19 @@ using UnityEngine;
 public class DamageSkillData : SkillData
 {
     // Method to execute the damaging skill
-    public override void ExecuteSkill(Character target, Character source, int damage)
+    public override void ExecuteSkill(Character source, Character target, int damage)
     {
         // If the damaging skill is an AOE skill
         if (isAOE == true)
         {
-            // Cache the enemy list in game manager
-            List<Enemy> activeEnemies = GameManager.Instance.enemyList;
+            // Initialize a temp enemy list
+            List<Enemy> activeEnemies = new List<Enemy>();
+
+            // Create a copy of the enemy list in game manager
+            for (int i = 0; i < GameManager.Instance.enemyList.Count; i++)
+            {
+                activeEnemies.Add(GameManager.Instance.enemyList[i]);
+            }
 
             // Deal damage to all active enemies
             for (int i = 0; i < activeEnemies.Count; i++)

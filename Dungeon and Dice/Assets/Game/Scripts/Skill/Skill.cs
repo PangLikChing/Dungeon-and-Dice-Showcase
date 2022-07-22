@@ -11,7 +11,7 @@ public class Skill : MonoBehaviour
 {
     [Header("Data")]
     [Tooltip("Starting skill data for this skill")]
-    [SerializeField] SkillData skillData;
+    public SkillData skillData;
     [Tooltip("Die size for this skill")]
     [ReadOnly] public Dice.DieSize dieSize;
     [Tooltip("Number of die for damage for this skill")]
@@ -72,11 +72,14 @@ public class Skill : MonoBehaviour
 
     // Method to use the skill
     // TODO : Change this to accept para later (Character source, Character target, int amount)
-    public void ExecuteSkill()
+    public void ExecuteSkill(Character source, Character target, int amount)
     {
         // Throw a debug message
         Debug.Log($"Executing skill: {skillNameText.text}");
 
         // TODO : Calculate the amount needed for executing here
+
+        // The source will deal the amount of damage to the target
+        skillData.ExecuteSkill(source, target, amount);
     }
 }

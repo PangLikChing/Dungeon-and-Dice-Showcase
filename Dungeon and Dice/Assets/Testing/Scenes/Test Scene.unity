@@ -325,7 +325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &194565665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &578909244
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1597,6 +1597,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1470535560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7143237828906600839, guid: 8601ca18f5379634d875beae49d8c13a, type: 3}
+  m_PrefabInstance: {fileID: 641167572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f08f34054ef244e91b3644efed77b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1665644345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,7 +1996,7 @@ PrefabInstance:
     - target: {fileID: 1615473323688994323, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
       propertyPath: skillData
       value: 
-      objectReference: {fileID: 11400000, guid: 38e1ef92da001bb46b373e49b126c2fc, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f2822d1c6626324387b6ae8591a2a62, type: 2}
     - target: {fileID: 1615473323688994324, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2033,10 +2044,6 @@ PrefabInstance:
     - target: {fileID: 1615473323688994325, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
       propertyPath: m_Name
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 1615473323688994325, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d25bc9357e6a07f47920d0b8d03bba04, type: 3}
@@ -2112,6 +2119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4494230377343027138, guid: 5c581b538403d4646ba256329a3e47d3, type: 3}
+      propertyPath: currentPlayer
+      value: 
+      objectReference: {fileID: 1470535560}
     - target: {fileID: 4494230377343027138, guid: 5c581b538403d4646ba256329a3e47d3, type: 3}
       propertyPath: enemiesParent
       value: 

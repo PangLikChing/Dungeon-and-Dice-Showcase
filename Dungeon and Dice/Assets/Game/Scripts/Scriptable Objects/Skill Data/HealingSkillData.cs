@@ -9,13 +9,19 @@ using UnityEngine;
 public class HealingSkillData : SkillData
 {
     // Method to execute the healing skill
-    public override void ExecuteSkill(Character target, Character source, int healing)
+    public override void ExecuteSkill(Character source, Character target, int healing)
     {
         // If the healing skill is an AOE skill
         if (isAOE == true)
         {
-            // Cache the player list in game manager
-            List<Player> activePlayers = GameManager.Instance.playerList;
+            // Initialize a temp enemy list
+            List<Player> activePlayers = new List<Player>();
+
+            // Create a copy of the player list in game manager
+            for (int i = 0; i < GameManager.Instance.playerList.Count; i++)
+            {
+                activePlayers.Add(GameManager.Instance.playerList[i]);
+            }
 
             // Heal all active players
             for (int i = 0; i < activePlayers.Count; i++)

@@ -16,7 +16,7 @@ public abstract class SkillData : ScriptableObject
     public SkillLevel[] skillLevel;
 
     // Method to execute the damaging skill
-    public abstract void ExecuteSkill(Character target, Character source, int amount);
+    public abstract void ExecuteSkill(Character source, Character target, int amount);
 
     [System.Serializable]
     public struct SkillLevel

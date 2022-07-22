@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 /// <summary>
@@ -8,6 +9,11 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class SkillDropboxDropHandler : DropHandler
 {
+    // More events here to remove all usage of Game Manager.Instance
+
+    [Tooltip("Raise when there is no current target")]
+    public UnityEvent<Character> ChangeTarget;
+
     public override void OnDrop(PointerEventData eventData)
     {
         // Execute the base DropHandler class's code
@@ -25,7 +31,49 @@ public class SkillDropboxDropHandler : DropHandler
                 if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
                 {
                     // Execute the skill
-                    skill.ExecuteSkill();
+                    // TODO : Change the target and damage here
+                    // If the skill is a damaging skill
+                    if (skill.skillData.GetType() == typeof(DamageSkillData))
+                    {
+                        // If there is no enemy target yet
+                        if (GameManager.Instance.currentEnemyTarget == null)
+                        {
+                            try
+                            {
+                                // Set the target at the first enemy in the enemy list
+                                ChangeTarget.Invoke(GameManager.Instance.enemyList[0]);
+                            }
+                            catch
+                            {
+                                // Throw a debug message
+                                Debug.Log("There is no enemy left!");
+                            }
+                        }
+
+                        // Execute the skill on the targeted enemy, no matter it is an AOE or not
+                        skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentEnemyTarget, 6);
+                    }
+                    // If the skill is a healing or shielding skill
+                    else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
+                    {
+                        // If there is no player target yet
+                        if (GameManager.Instance.currentPlayerTarget == null)
+                        {
+                            try
+                            {
+                                // Set the target at the first enemy in the enemy list
+                                ChangeTarget.Invoke(GameManager.Instance.playerList[0]);
+                            }
+                            catch
+                            {
+                                // Throw a debug message
+                                Debug.Log("There is no player left!");
+                            }
+                        }
+
+                        // Execute the skill on the targeted player, no matter it is an AOE or not
+                        skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentPlayerTarget, 6);
+                    }
                 }
                 // If the current encounter is a rest event
                 else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))

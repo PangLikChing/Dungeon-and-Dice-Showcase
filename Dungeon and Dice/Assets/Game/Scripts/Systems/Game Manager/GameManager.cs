@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     [ReadOnly] public List<Player> playerList;
     [Tooltip("List of active enemies")]
     [ReadOnly] public List<Enemy> enemyList;
+    [Tooltip("Which player is taking their turn")]
+    /*[ReadOnly] */public Player currentPlayer;
     [Tooltip("Last player that the user targets")]
     [ReadOnly] public Character currentPlayerTarget = null;
     [Tooltip("Last enemy that the user targets")]
@@ -83,13 +85,19 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeTarget(Character character)
     {
+        // Throw a debug message
+        Debug.Log($"Changing target to {character.name}");
+
         // If the character is a player
         if (character.GetType() == typeof(Player))
         {
+            // Set targeted player to that player
             currentPlayerTarget = character;
         }
+        // If the character is an enemy
         else if (character.GetType() == typeof(Enemy))
         {
+            // Set targeted enemy to that enemy
             currentEnemyTarget = character;
         }
     }
