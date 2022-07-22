@@ -1,3 +1,4 @@
+using Project.Build.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,11 @@ public class Dice : MonoBehaviour
     [Tooltip("The number display's Image of this die")]
     [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
-    [SerializeField] float rollingTime = 0.0f;
+    public float rollingTime = 0.0f;
     [Tooltip("How long will the face of the dice change during rolling")]
     [SerializeField] float changeSideTime = 0.0f;
+    [Tooltip("Roll result of the die")]
+    [ReadOnly] public int rollResult = 0;
     [Tooltip("All the faces of the die")]
     [SerializeField] Sprite[] faces;
 
@@ -95,21 +98,24 @@ public class Dice : MonoBehaviour
     private void GetRollResult()
     {
         // This result will have a minus 1 because there is no die with 0 on it
-        int rollResult = Random.Range(0, faces.Length);
+        int result = Random.Range(0, faces.Length);
 
         // Throw a debug message
-        Debug.Log($"The roll result is {rollResult + 1}");
+        Debug.Log($"The roll result is {result + 1}");
 
         try
         {
             // Change the sprite to match the roll result
-            image.sprite = faces[rollResult];
+            image.sprite = faces[result];
         }
         catch
         {
             // Throw a debug message
             Debug.Log("There is no sprite randerer on the die face prefeb!");
         }
+
+        // Save the roll result
+        rollResult = (result + 1);
     }
 
     IEnumerator Rolling()

@@ -30,8 +30,6 @@ public class SkillDropboxDropHandler : DropHandler
                 // If the current encounter is a battle
                 if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
                 {
-                    // Execute the skill
-                    // TODO : Change the target and damage here
                     // If the skill is a damaging skill
                     if (skill.skillData.GetType() == typeof(DamageSkillData))
                     {
@@ -49,9 +47,6 @@ public class SkillDropboxDropHandler : DropHandler
                                 Debug.Log("There is no enemy left!");
                             }
                         }
-
-                        // Execute the skill on the targeted enemy, no matter it is an AOE or not
-                        skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentEnemyTarget, 6);
                     }
                     // If the skill is a healing or shielding skill
                     else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
@@ -70,10 +65,10 @@ public class SkillDropboxDropHandler : DropHandler
                                 Debug.Log("There is no player left!");
                             }
                         }
-
-                        // Execute the skill on the targeted player, no matter it is an AOE or not
-                        skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentPlayerTarget, 6);
                     }
+
+                    // Roll the dice and execute the skill
+                    StartCoroutine(RollDiceAndExecuteSkill(eventData.pointerDrag.GetComponent<Dice>(), skill));
                 }
                 // If the current encounter is a rest event
                 else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
@@ -97,6 +92,30 @@ public class SkillDropboxDropHandler : DropHandler
                 // Throw a debug message
                 Debug.Log("My parent is not a skill");
             }
+        }
+    }
+
+    IEnumerator RollDiceAndExecuteSkill(Dice dice, Skill skill)
+    {
+        // Roll the die
+        dice.RollDie();
+
+        // Wait for the die to finish the roll
+        yield return new WaitForSeconds(dice.rollingTime);
+
+        // Execute the skill
+        // TODO : Calculate damage here
+        // If the skill is a damaging skill
+        if (skill.skillData.GetType() == typeof(DamageSkillData))
+        {
+            // Execute the skill on the targeted enemy, no matter it is an AOE or not
+            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentEnemyTarget, dice.rollResult);
+        }
+        // If the skill is a healing or shielding skill
+        else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
+        {
+            // Execute the skill on the targeted player, no matter it is an AOE or not
+            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentPlayerTarget, dice.rollResult);
         }
     }
 }
