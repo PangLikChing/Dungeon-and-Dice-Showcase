@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Script to control the targeting behaviour of the targeting system
 /// </summary>
 public class TargetingController : MonoBehaviour
 {
+    [Tooltip("Raise when the user clicked on a collider transform")]
+    public UnityEvent<Transform> TryChangeTarget;
+
     void Update()
     {
         // If the user press the left mouse button, use new input system later
@@ -17,6 +21,7 @@ public class TargetingController : MonoBehaviour
         }
     }
 
+    // Method to try and target the a character
     private void TryTarget()
     {
         // Cast a ray from mouse position to game world
@@ -33,11 +38,8 @@ public class TargetingController : MonoBehaviour
                 // Throw a debug message
                 Debug.Log("Target is: " + hitTransform.name);
 
-                // Ask the UI Manager to display the targeting UI
-                UIManager.Instance.CreateTargetUI(hitTransform);
-
-                // Ask the Game Manager to change target
-                TargetingManager.Instance.ChangeTarget.Invoke(hitTransform.GetComponent<Character>());
+                // Ask the UI Manager to display the targeting UI and the Game Manager to change target
+                TryChangeTarget.Invoke(hitTransform);
             }
     }
         catch

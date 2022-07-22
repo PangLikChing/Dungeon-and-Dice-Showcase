@@ -15,7 +15,8 @@ public class UIManager : Singleton<UIManager>
     [Tooltip("Canvas that the gameplay related object should be in")]
     public Canvas gameplayCanvas;
 
-    public void CreateTargetUI(Transform hitTransform)
+    // Method to instantiated a target marker / move existing target marker
+    public void CreateTargetMarker(Transform hitTransform)
     {
         // If there is no target marker instantiated into the game yet
         if (instantiatedTargetMarker == null)
@@ -38,5 +39,15 @@ public class UIManager : Singleton<UIManager>
 
         // Change the instantiated target marker's position
         instantiatedTargetMarker.position = Camera.main.WorldToScreenPoint(hitTransform.position);
+    }
+
+    // Method to destory the existing instantiated target marker
+    public void RemoveTargetMarker()
+    {
+        // Destory the instantiated target marker's game object
+        Destroy(instantiatedTargetMarker.gameObject);
+
+        // Remove the referernce to the previous instantiated target marker
+        instantiatedTargetMarker = null;
     }
 }

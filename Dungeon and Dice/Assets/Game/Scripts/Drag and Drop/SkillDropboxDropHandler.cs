@@ -12,7 +12,7 @@ public class SkillDropboxDropHandler : DropHandler
     // More events here to remove all usage of Game Manager.Instance
 
     [Tooltip("Raise when there is no current target")]
-    public UnityEvent<Character> ChangeTarget;
+    public UnityEvent<Transform> TryChangeTarget;
 
     public override void OnDrop(PointerEventData eventData)
     {
@@ -40,8 +40,8 @@ public class SkillDropboxDropHandler : DropHandler
                         {
                             try
                             {
-                                // Set the target at the first enemy in the enemy list
-                                ChangeTarget.Invoke(GameManager.Instance.enemyList[0]);
+                                // Try to set the target at the first enemy in the enemy list in the game manager
+                                TryChangeTarget.Invoke(GameManager.Instance.enemyList[0].transform);
                             }
                             catch
                             {
@@ -61,8 +61,8 @@ public class SkillDropboxDropHandler : DropHandler
                         {
                             try
                             {
-                                // Set the target at the first enemy in the enemy list
-                                ChangeTarget.Invoke(GameManager.Instance.playerList[0]);
+                                // Try to set the target at the first player in the player list in the game manager
+                                TryChangeTarget.Invoke(GameManager.Instance.playerList[0].transform);
                             }
                             catch
                             {

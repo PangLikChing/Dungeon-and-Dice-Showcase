@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5a307523cea1b4c9ca2de0c0a6b913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 8694f8faf2693a34ba833bc8bd926a1d, type: 2}
   dieSize: 0
   numberOfDie: 1
   currentSkillLevel: 1
@@ -412,11 +412,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multipleHeldObjects: 0
   heldObject: {fileID: 0}
-  ChangeTarget:
+  TryChangeTarget:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 4f17cb49d8d078c4ca72134e0449b0e2, type: 2}
-        m_TargetAssemblyTypeName: CharacterEventChannel, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: c02cecb62917df04fa7825a9087a8c49, type: 2}
+        m_TargetAssemblyTypeName: TransformEventChannel, Assembly-CSharp
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:

@@ -2,6 +2,7 @@ using Project.Build.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Game Manager should be the one who communicate between game world and systems
@@ -17,7 +18,7 @@ public class GameManager : Singleton<GameManager>
     [Tooltip("List of active enemies")]
     [ReadOnly] public List<Enemy> enemyList;
     [Tooltip("Which player is taking their turn")]
-    /*[ReadOnly] */public Player currentPlayer;
+    /*[ReadOnly] */public Player currentPlayer = null;
     [Tooltip("Last player that the user targets")]
     [ReadOnly] public Character currentPlayerTarget = null;
     [Tooltip("Last enemy that the user targets")]
@@ -26,6 +27,9 @@ public class GameManager : Singleton<GameManager>
     [ReadOnly] public Encounter currentEncounter;
     [Tooltip("Current encounter's win condition")]
     [ReadOnly] public List<Enemy> currentWinCondition;
+
+    [Tooltip("Raise when it is needed to remove a target marker")]
+    public UnityEvent RemoveTargetMarker;
 
     // Method to add the player to the player list
     public void AddPlayer(Player player)
@@ -53,6 +57,18 @@ public class GameManager : Singleton<GameManager>
         // Throw a debug message
         Debug.Log($"Removing {player.name} from the player list");
 
+        // If the player is the current targetted player
+        if (player == currentPlayerTarget)
+        {
+            // Remove the reference to this player for current targetted player
+            currentPlayerTarget = null;
+
+            // Ask the UI system to remove the UI display on the dead enemy
+            RemoveTargetMarker.Invoke();
+        }
+
+        // TODO : Play the death animation in the animator
+
         // Remove the player to the player list
         playerList.Remove(player);
     }
@@ -66,6 +82,17 @@ public class GameManager : Singleton<GameManager>
         // Remove the enemy to the enemy list
         enemyList.Remove(enemy);
 
+        // If the enemy is the current targetted enemy
+        if (enemy == currentEnemyTarget)
+        {
+            // Remove the reference to this enemy for current targetted enemy
+            currentEnemyTarget = null;
+
+            // Ask the UI system to remove the UI display on the dead enemy
+            RemoveTargetMarker.Invoke();
+        }
+
+        // TODO : Play the death animation in the animator instead
         // Destory the enemy game object
         Destroy(enemy.gameObject);
 

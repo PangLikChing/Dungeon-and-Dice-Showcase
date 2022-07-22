@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2864404726655452743}
   - component: {fileID: 2864404726655452740}
+  - component: {fileID: 6468106339230977557}
+  - component: {fileID: 2885525182041026645}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -45,3 +47,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMarker: {fileID: 8876093196016713505, guid: ee1b57cf0a5310e4fac7694f170fe1c2, type: 3}
   gameplayCanvas: {fileID: 0}
+--- !u!114 &6468106339230977557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864404726655452741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6eafcf283845249aa877502e4473c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: c02cecb62917df04fa7825a9087a8c49, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2864404726655452740}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CreateTargetMarker
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2885525182041026645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864404726655452741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a0f7c248f1b3a47bee7ba643d64c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: fa62d254639fa954985153259126809b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2864404726655452740}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: RemoveTargetMarker
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
