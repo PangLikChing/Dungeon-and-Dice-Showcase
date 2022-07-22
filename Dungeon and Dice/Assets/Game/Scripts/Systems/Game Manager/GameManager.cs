@@ -16,6 +16,10 @@ public class GameManager : Singleton<GameManager>
     [ReadOnly] public List<Player> playerList;
     [Tooltip("List of active enemies")]
     [ReadOnly] public List<Enemy> enemyList;
+    [Tooltip("Last player that the user targets")]
+    [ReadOnly] public Character currentPlayerTarget = null;
+    [Tooltip("Last enemy that the user targets")]
+    [ReadOnly] public Character currentEnemyTarget = null;
     [Tooltip("The current encounter")]
     [ReadOnly] public Encounter currentEncounter;
     [Tooltip("Current encounter's win condition")]
@@ -74,6 +78,19 @@ public class GameManager : Singleton<GameManager>
             {
                 FinishEncounter();
             }
+        }
+    }
+
+    public void ChangeTarget(Character character)
+    {
+        // If the character is a player
+        if (character.GetType() == typeof(Player))
+        {
+            currentPlayerTarget = character;
+        }
+        else if (character.GetType() == typeof(Enemy))
+        {
+            currentEnemyTarget = character;
         }
     }
 

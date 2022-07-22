@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26abebd1eef5ec949af5a4d000358269, type: 3}
   m_Name: Easy Encounter
   m_EditorClassIdentifier: 
-  reward: {fileID: 11400000, guid: 49f1a1874a47f2a4bac066647fe86d84, type: 2}
   difficulty: 1
   enemies:
-  - {fileID: 1267536658904874818, guid: a021e2ea30598994586612f76f265e69, type: 3}
-  - {fileID: 1267536658904874818, guid: a021e2ea30598994586612f76f265e69, type: 3}
-  - {fileID: 7250123128533692030, guid: 967ac5318990d6e44a02ac7dc2b522ba, type: 3}
-  - {fileID: 6038371143600098321, guid: eff2dd5fa57a041478b77597a06e6fed, type: 3}
-  - {fileID: 6038371143600098321, guid: eff2dd5fa57a041478b77597a06e6fed, type: 3}
+  - {fileID: 3453401616198126248, guid: 458b4d7e2a1385646aa709b2845686b5, type: 3}
+  - {fileID: 3453401616198126248, guid: 458b4d7e2a1385646aa709b2845686b5, type: 3}
+  - {fileID: 5360931317660544504, guid: 9b6a8edeaf2f92141b7363c46cb6224a, type: 3}
+  - {fileID: 1531927685003518666, guid: 428bb560ae8ef8c439aee72299e81f74, type: 3}
+  - {fileID: 1531927685003518666, guid: 428bb560ae8ef8c439aee72299e81f74, type: 3}
   winCondition: 000000000100000002000000
+  reward: {fileID: 11400000, guid: 49f1a1874a47f2a4bac066647fe86d84, type: 2}

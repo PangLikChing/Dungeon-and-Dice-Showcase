@@ -7,6 +7,7 @@ using UnityEngine.Events;
 /// <summary>
 /// An abstract class for all characters in the game
 /// </summary>
+[RequireComponent(typeof(BoxCollider2D))]
 public abstract class Character : MonoBehaviour
 {
     [Header("Stats")]

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 257860018847731344}
   - component: {fileID: 317572435}
   - component: {fileID: 317572434}
+  - component: {fileID: 2597038807005801894}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -47,6 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73c14816a5cfc04196d817d285628d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesParent: {fileID: 0}
+  playerList: []
+  enemyList: []
+  currentPlayerTarget: {fileID: 0}
+  currentEnemyTarget: {fileID: 0}
+  currentEncounter: {fileID: 0}
+  currentWinCondition: []
 --- !u!114 &317572436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +158,34 @@ MonoBehaviour:
       - m_Target: {fileID: 4494230377343027138}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: UpdateCharacterShield
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2597038807005801894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494230377343027136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4c0d5455839f54492a4508a0cba2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: 4f17cb49d8d078c4ca72134e0449b0e2, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4494230377343027138}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeTarget
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

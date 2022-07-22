@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Script to serve as a editor tool that monitors changes like a layout group
+/// User is required to set their own pivot points for the objects
 /// </summary>
 [ExecuteInEditMode]
 public class GridLayoutGroup2D : MonoBehaviour
@@ -19,6 +20,12 @@ public class GridLayoutGroup2D : MonoBehaviour
         x,
         y
     };
+
+    void Start()
+    {
+        // Change child game object's position
+        PositionObjects();
+    }
 
     void Update()
     {
