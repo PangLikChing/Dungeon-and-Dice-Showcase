@@ -14,3 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 1
   maximumHealth: 10
+  type: 0
+  characterStat:
+  - statModifier: 0
+    amount: 2
+  - statModifier: 1
+    amount: 3
+  - statModifier: 2
+    amount: 2
+  - statModifier: 3
+    amount: 1

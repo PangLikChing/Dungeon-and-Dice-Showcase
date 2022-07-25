@@ -27,64 +27,72 @@ public class SkillDropboxDropHandler : DropHandler
                 // Get a reference to the parent's skill component
                 Skill skill = transform.parent.GetComponent<Skill>();
 
-                // If the current encounter is a battle
-                if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
+                try
                 {
-                    // If the skill is a damaging skill
-                    if (skill.skillData.GetType() == typeof(DamageSkillData))
+                    // If the current encounter is a battle
+                    if (GameManager.Instance.currentEncounter.GetType() == typeof(Battle))
                     {
-                        // If there is no enemy target yet
-                        if (GameManager.Instance.currentEnemyTarget == null)
+                        // If the skill is a damaging skill
+                        if (skill.skillData.GetType() == typeof(DamageSkillData))
                         {
-                            try
+                            // If there is no enemy target yet
+                            if (GameManager.Instance.currentEnemyTarget == null)
                             {
-                                // Try to set the target at the first enemy in the enemy list in the game manager
-                                TryChangeTarget.Invoke(GameManager.Instance.enemyList[0].transform);
-                            }
-                            catch
-                            {
-                                // Throw a debug message
-                                Debug.Log("There is no enemy left!");
+                                try
+                                {
+                                    // Try to set the target at the first enemy in the enemy list in the game manager
+                                    TryChangeTarget.Invoke(GameManager.Instance.enemyList[0].transform);
+                                }
+                                catch
+                                {
+                                    // Throw a debug message
+                                    Debug.Log("There is no enemy left!");
+                                }
                             }
                         }
-                    }
-                    // If the skill is a healing or shielding skill
-                    else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
-                    {
-                        // If there is no player target yet
-                        if (GameManager.Instance.currentPlayerTarget == null)
+                        // If the skill is a healing or shielding skill
+                        else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
                         {
-                            try
+                            // If there is no player target yet
+                            if (GameManager.Instance.currentPlayerTarget == null)
                             {
-                                // Try to set the target at the first player in the player list in the game manager
-                                TryChangeTarget.Invoke(GameManager.Instance.playerList[0].transform);
-                            }
-                            catch
-                            {
-                                // Throw a debug message
-                                Debug.Log("There is no player left!");
+                                try
+                                {
+                                    // Try to set the target at the first player in the player list in the game manager
+                                    TryChangeTarget.Invoke(GameManager.Instance.playerList[0].transform);
+                                }
+                                catch
+                                {
+                                    // Throw a debug message
+                                    Debug.Log("There is no player left!");
+                                }
                             }
                         }
-                    }
 
-                    // Roll the dice and execute the skill
-                    StartCoroutine(RollDiceAndExecuteSkill(skill));
-                }
-                // If the current encounter is a rest event
-                else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
-                {
-                    // If the die size of the dropped object and the skill matches
-                    if (eventData.pointerDrag.GetComponent<Dice>().dieSize == skill.dieSize)
+                        // Roll the dice and execute the skill
+                        StartCoroutine(RollDiceAndExecuteSkill(skill));
+                    }
+                    // If the current encounter is a rest event
+                    else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
                     {
-                        // Upgrade the skill
-                        skill.UpgradeSkill();
+                        // If the die size of the dropped object and the skill matches
+                        if (eventData.pointerDrag.GetComponent<Dice>().dieSize == skill.dieSize)
+                        {
+                            // Upgrade the skill
+                            skill.UpgradeSkill();
+                        }
+                    }
+                    // Else
+                    else
+                    {
+                        // Throw a debug message
+                        Debug.Log("Unknown encounter type!");
                     }
                 }
-                // Else
-                else
+                catch
                 {
                     // Throw a debug message
-                    Debug.Log("Unknown encounter type!");
+                    Debug.Log("There is no encounter!");
                 }
             }
             catch

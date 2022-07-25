@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Aid
   isAOE: 1
+  modifier: 3
+  skillType: 3
   skillLevel:
   - diceNumber: 1
     dieSize: 1
