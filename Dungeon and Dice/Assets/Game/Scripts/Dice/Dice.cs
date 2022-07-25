@@ -10,6 +10,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image), typeof(Animator))]
 public class Dice : MonoBehaviour
 {
+    [Header("Reference")]
     [Tooltip("The Animator of this die")]
     Animator animator;
     [Tooltip("Is this die rolling")]
@@ -17,12 +18,13 @@ public class Dice : MonoBehaviour
     [Tooltip("Timer for keeping track of when this die should change a side to display")]
     float changeSideTimePassed = 0.0f;
 
+    [Header("Settings")]
     [Tooltip("Should this die have a random face on start")]
     [SerializeField] bool randomStart = true;
 
     [Header("Data")]
     [Tooltip("Die size of this die")]
-    public DieSize dieSize;
+    public DiceManager.DieSize dieSize;
     [Tooltip("The number display's Image of this die")]
     [SerializeField] Image image;
     [Tooltip("How long will the result get rolled")]
@@ -34,16 +36,7 @@ public class Dice : MonoBehaviour
     [Tooltip("All the faces of the die")]
     [SerializeField] Sprite[] faces;
 
-    public enum DieSize
-    {
-        D4,
-        D6,
-        D8,
-        D10,
-        D12,
-        D20
-    };
-    void Start()
+    void Awake()
     {
         // Initialize
         animator = GetComponent<Animator>();

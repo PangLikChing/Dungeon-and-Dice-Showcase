@@ -68,7 +68,7 @@ public class SkillDropboxDropHandler : DropHandler
                     }
 
                     // Roll the dice and execute the skill
-                    StartCoroutine(RollDiceAndExecuteSkill(eventData.pointerDrag.GetComponent<Dice>(), skill));
+                    StartCoroutine(RollDiceAndExecuteSkill(skill));
                 }
                 // If the current encounter is a rest event
                 else if (GameManager.Instance.currentEncounter.GetType() == typeof(Resting))
@@ -95,13 +95,42 @@ public class SkillDropboxDropHandler : DropHandler
         }
     }
 
-    IEnumerator RollDiceAndExecuteSkill(Dice dice, Skill skill)
+    IEnumerator RollDiceAndExecuteSkill(Skill skill)
     {
-        // Roll the die
-        dice.RollDie();
+        // Intialize a temp transform prefeb to store the die object prefeb
+        Dice die = null;
+
+        // Determine the die object prefeb needed
+        for (int i = 0; i < DiceManager.Instance.dieMatching.Length; i++)
+        {
+            // If the die size in the skill is the same as the one in dice manager
+            if (skill.dieSize == DiceManager.Instance.dieMatching[i].dieSize)
+            {
+                die = DiceManager.Instance.dieMatching[i].diePrefeb;
+            }
+        }
+
+        // Instantiate a die object for every die needed and roll them
+        for (int i = 0; i < skill.numberOfDie; i++)
+        {
+            // Instantiate the die
+            Dice dice = Instantiate(die, DiceRollTray.Instance.transform);
+
+            // Roll the die
+            dice.RollDie();
+        }
 
         // Wait for the die to finish the roll
-        yield return new WaitForSeconds(dice.rollingTime);
+        yield return new WaitForSeconds(die.rollingTime);
+
+        // Initialzie a temp int to store the roll result
+        int rollResults = 0;
+
+        // Calculate the total amount of roll results
+        for (int i = 0; i < DiceRollTray.Instance.transform.childCount; i++)
+        {
+            rollResults += DiceRollTray.Instance.transform.GetChild(i).GetComponent<Dice>().rollResult;
+        }
 
         // Execute the skill
         // TODO : Calculate damage here
@@ -109,13 +138,13 @@ public class SkillDropboxDropHandler : DropHandler
         if (skill.skillData.GetType() == typeof(DamageSkillData))
         {
             // Execute the skill on the targeted enemy, no matter it is an AOE or not
-            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentEnemyTarget, dice.rollResult);
+            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentEnemyTarget, rollResults);
         }
         // If the skill is a healing or shielding skill
         else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
         {
             // Execute the skill on the targeted player, no matter it is an AOE or not
-            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentPlayerTarget, dice.rollResult);
+            skill.ExecuteSkill(GameManager.Instance.currentPlayer, GameManager.Instance.currentPlayerTarget, rollResults);
         }
     }
 }

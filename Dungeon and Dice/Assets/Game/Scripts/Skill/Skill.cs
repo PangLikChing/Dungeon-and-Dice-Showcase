@@ -13,19 +13,32 @@ public class Skill : MonoBehaviour
     [Tooltip("Starting skill data for this skill")]
     public SkillData skillData;
     [Tooltip("Die size for this skill")]
-    [ReadOnly] public Dice.DieSize dieSize;
+    [ReadOnly] public DiceManager.DieSize dieSize;
     [Tooltip("Number of die for damage for this skill")]
-    [SerializeField][ReadOnly] int numberOfDie = 1;
+    [ReadOnly] public int numberOfDie = 1;
     [Tooltip("Current skill level for this skill")]
     [SerializeField][ReadOnly] int currentSkillLevel = 1;
 
     [Header("Reference")]
+    [Tooltip("Current Dice Roll Tray")]
+    [SerializeField][ReadOnly] Transform diceRollTray;
     [Tooltip("Skill Name Text Component for this skill")]
     [SerializeField] TMP_Text skillNameText;
     [Tooltip("Skill Desription Text Component for this skill")]
     [SerializeField] TMP_Text skillDesriptionText;
     void Start()
     {
+        try
+        {
+            // Initialize
+            diceRollTray = DiceRollTray.Instance.transform;
+        }
+        catch
+        {
+            // Throw a debug message
+            Debug.Log("Dice Roll Tray is missing!");
+        }
+
         try
         {
             // Initialize

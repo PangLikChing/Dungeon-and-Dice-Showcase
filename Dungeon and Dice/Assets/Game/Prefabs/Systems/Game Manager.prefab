@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73c14816a5cfc04196d817d285628d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceRollTray: {fileID: 0}
   enemiesParent: {fileID: 0}
   playerList: []
   enemyList: []

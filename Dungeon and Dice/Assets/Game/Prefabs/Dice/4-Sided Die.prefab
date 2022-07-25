@@ -186,10 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9bbbe21bc9ae4f968d46854f3fd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2356731367549362112}
   randomStart: 1
+  dieSize: 0
   image: {fileID: 2356731366930999644}
   rollingTime: 5
   changeSideTime: 0.1
+  rollResult: 0
   faces:
   - {fileID: 21300000, guid: b48e25510aa3ad94caa5aa0abc88a98c, type: 3}
   - {fileID: 21300000, guid: 6c204f7582c7e7349ac852a971dc1271, type: 3}

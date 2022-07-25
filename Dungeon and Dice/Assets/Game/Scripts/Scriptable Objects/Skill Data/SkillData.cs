@@ -22,6 +22,6 @@ public abstract class SkillData : ScriptableObject
     public struct SkillLevel
     {
         public int diceNumber;
-        public Dice.DieSize dieSize;
+        public DiceManager.DieSize dieSize;
     }
 }
