@@ -14,7 +14,7 @@ public class AudioManager : Singleton<AudioManager>
     [HideInInspector] public VolumeChangedEvent OnSoundFXVolumeChanged;
     [HideInInspector] public VolumeChangedEvent OnBackgroundVolumeChanged;
 
-    private void Awake()
+    void Awake()
     {
         //DontDestroyOnLoad(gameObject);
         OnSoundFXVolumeChanged = new VolumeChangedEvent();
@@ -47,5 +47,11 @@ public class AudioManager : Singleton<AudioManager>
         }
         soundFXVolume = volume;
         OnSoundFXVolumeChanged.Invoke(soundFXVolume);
+    }
+
+    // Destory the gameObject on application quit to prevent leaking
+    void OnApplicationQuit()
+    {
+        Destroy(gameObject);
     }
 }
