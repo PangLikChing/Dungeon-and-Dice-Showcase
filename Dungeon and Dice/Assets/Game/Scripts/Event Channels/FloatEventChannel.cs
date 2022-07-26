@@ -7,11 +7,11 @@ public class FloatEventChannel : ScriptableObject
 {
     private List<FloatEventListener> listeners = new List<FloatEventListener>();
 
-    public void Raise(int integer)
+    public void Raise(float floatNumber)
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised(integer);
+            listeners[i].OnEventRaised(floatNumber);
         }
     }
 

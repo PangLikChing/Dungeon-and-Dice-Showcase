@@ -16,7 +16,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         OnSoundFXVolumeChanged = new VolumeChangedEvent();
         OnBackgroundVolumeChanged = new VolumeChangedEvent();
     }

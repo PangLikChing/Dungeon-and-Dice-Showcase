@@ -20,8 +20,8 @@ public class FloatEventListener : MonoBehaviour
         channel.UnregisterListener(this);
     }
 
-    public void OnEventRaised(int integer)
+    public void OnEventRaised(float floatNumber)
     {
-        response.Invoke(integer);
+        response.Invoke(floatNumber);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MainMenu : Menu
@@ -20,7 +21,7 @@ public class MainMenu : Menu
     /// <param name="sceneName">The name of the first gameplay scene</param>
     public void LoadGameScene()
     {
-        sceneToBeLoaded.Add(gameplayGlobalScene.ScenePath); //Stay uniform with  startup script
+        sceneToBeLoaded.Add(gameplayGlobalScene.ScenePath); // Stay uniform with startup script
         sceneToBeLoaded.Add(gameWorldScene.ScenePath);
         SceneLoader.Instance.OnSceneLoadedEvent += OnGameSceneLoaded;
         SceneLoader.Instance.LoadScenes(sceneToBeLoaded);
@@ -38,8 +39,19 @@ public class MainMenu : Menu
         MenuManager.Instance.ShowMenu(hudMenu);
     }
 
+    // Method to exit game
     public void QuitGame()
     {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
+
+    }
+
+    private void Application_quitting()
+    {
+        throw new System.NotImplementedException();
     }
 }
