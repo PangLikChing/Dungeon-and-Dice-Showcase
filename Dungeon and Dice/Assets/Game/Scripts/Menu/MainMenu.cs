@@ -47,11 +47,5 @@ public class MainMenu : Menu
 #else
         Application.Quit();
 #endif
-
-    }
-
-    private void Application_quitting()
-    {
-        throw new System.NotImplementedException();
     }
 }
