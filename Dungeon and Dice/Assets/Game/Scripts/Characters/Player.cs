@@ -10,12 +10,11 @@ public class Player : Character
 {
     [Header("Player")]
     [Tooltip("Stats scriptable object to determine the player's starting stats")]
-    [SerializeField] Stats playerStats;
+    [SerializeField] PlayerStats playerStats;
 
     void Awake()
     {
         // Initialize
-        attack = playerStats.attack;
         maximumHealth = playerStats.maximumHealth;
         currentHealth = maximumHealth;
         shield = 0;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// The base clase for all enemies in the game
@@ -8,8 +9,13 @@ using UnityEngine;
 public class Enemy : Character
 {
     [Header("Enemy")]
+    [Tooltip("Current attack of the enemy")]
+    [SerializeField] int attack = 0;
     [Tooltip("Stats scriptable object to determine the enemy's starting stats")]
-    [SerializeField] Stats enemyStats;
+    [SerializeField] EnemyStats enemyStats;
+
+    [Tooltip("Raise this when a character's attack needs to be updated")]
+    public UnityEvent<Character, int> UpdateCharacterAttack;
 
     void Awake()
     {
@@ -54,5 +60,21 @@ public class Enemy : Character
 
         // Remove this enemy from the enemy list in the Game Manager
         GameManager.Instance.RemoveEnemy(this);
+    }
+
+    // Method to change current attack (can be increase or decrease)
+    public void ChangeCurrentAttack(int amount)
+    {
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} is changing {amount} amount of attack!");
+
+        // Change the attack by the amount
+        attack += amount;
+
+        // Tell the others that my attack changed
+        UpdateCharacterAttack.Invoke(this, attack);
+
+        // Throw a debug message
+        Debug.Log($"{gameObject.name} has {attack} attack now!");
     }
 }

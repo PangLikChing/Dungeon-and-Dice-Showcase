@@ -11,16 +11,12 @@ using UnityEngine.Events;
 public abstract class Character : MonoBehaviour
 {
     [Header("Stats")]
-    [Tooltip("Current attack of the character")]
-    [SerializeField][ReadOnly] protected int attack = 0;
     [Tooltip("Current maximum health of the character")]
     [SerializeField] [ReadOnly] protected int maximumHealth = 0;
     [Tooltip("Current health that the character currently has")]
     [SerializeField][ReadOnly] protected int currentHealth = 0;
     [Tooltip("Current shield that the character currently has")]
     [SerializeField][ReadOnly] protected int shield = 0;
-    [Tooltip("Raise this when a character's attack needs to be updated")]
-    public UnityEvent<Character, int> UpdateCharacterAttack;
     [Tooltip("Raise this when a character's current health needs to be updated")]
     public UnityEvent<Character, int> UpdateCharacterCurrentHealth;
     [Tooltip("Raise this when a character's maximum health needs to be updated")]
@@ -136,22 +132,6 @@ public abstract class Character : MonoBehaviour
 
         // Increase shield
         ChangeShield(shielding);
-    }
-
-    // Method to change current attack (can be increase or decrease)
-    public virtual void ChangeCurrentAttack(int amount)
-    {
-        // Throw a debug message
-        Debug.Log($"{gameObject.name} is changing {amount} amount of attack!");
-
-        // Change the attack by the amount
-        attack += amount;
-
-        // Tell the others that my attack changed
-        UpdateCharacterAttack.Invoke(this, attack);
-
-        // Throw a debug message
-        Debug.Log($"{gameObject.name} has {attack} attack now!");
     }
 
     // Method to change current health (can be increase or decrease)

@@ -11,8 +11,14 @@ public class ShieldingSkillData : SupportSkillData
     // Method to execute the shielding skill
     public override void ExecuteSkill(Character source, Character target, int shielding)
     {
+        // If the shielding skill is a single-targeted skill
+        if (isAOE == false)
+        {
+            // Shield the target player
+            source.Shield(target, shielding);
+        }
         // If the shielding skill is an AOE skill
-        if (isAOE == true)
+        else
         {
             // Initialize a temp player list
             List<Player> activePlayers = new List<Player>();
@@ -28,12 +34,6 @@ public class ShieldingSkillData : SupportSkillData
             {
                 source.Shield(activePlayers[i], shielding);
             }
-        }
-        // If the shielding skill is a single-targeted skill
-        else
-        {
-            // Shield the target player
-            source.Shield(target, shielding);
         }
     }
 }

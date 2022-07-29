@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfb3a9f6064d3543941f4f1f13df0b3, type: 3}
+  m_Name: Wizard
+  m_EditorClassIdentifier: 
+  jobName: Wizard
+  skillsData:
+  - {fileID: 11400000, guid: 5bf4b50caf8c4064397e9c2db6a3f542, type: 2}
+  - {fileID: 11400000, guid: f7dfc6e4d11fd8d46aefe89a2c1d3e5e, type: 2}
+  - {fileID: 11400000, guid: 5fcee261c60dda64990a19a865614932, type: 2}

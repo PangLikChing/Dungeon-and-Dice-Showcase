@@ -11,8 +11,14 @@ public class HealingSkillData : SupportSkillData
     // Method to execute the healing skill
     public override void ExecuteSkill(Character source, Character target, int healing)
     {
+        // If the healing skill is a single-targeted skill
+        if (isAOE == false)
+        {
+            // Heal the target player
+            source.Heal(target, healing);
+        }
         // If the healing skill is an AOE skill
-        if (isAOE == true)
+        else
         {
             // Initialize a temp enemy list
             List<Player> activePlayers = new List<Player>();
@@ -28,12 +34,6 @@ public class HealingSkillData : SupportSkillData
             {
                 source.Heal(activePlayers[i], healing);
             }
-        }
-        // If the healing skill is a single-targeted skill
-        else
-        {
-            // Heal the target player
-            source.Heal(target, healing);
         }
     }
 }

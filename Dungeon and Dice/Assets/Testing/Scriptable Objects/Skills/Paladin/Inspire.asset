@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32b4539a7d38b249bb282a33c856822, type: 3}
+  m_Name: Inspire
+  m_EditorClassIdentifier: 
+  skillName: Inspire
+  isAOE: 0
+  modifier: 3
+  skillType: 3
+  skillLevel:
+  - diceNumber: 1
+    dieSize: 0
+  - diceNumber: 2
+    dieSize: 0
+  - diceNumber: 3
+    dieSize: 0
+  - diceNumber: 4
+    dieSize: 0
+  - diceNumber: 5
+    dieSize: 0
+  targetSelfOnly: 0

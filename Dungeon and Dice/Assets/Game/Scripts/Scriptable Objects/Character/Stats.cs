@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Scriptable object that store all the stats on start for a character
+/// Abstract scriptable object that store all the stats on start for a character
 /// </summary>
-[CreateAssetMenu(fileName = "Character Stats", menuName = "Character/Stats")]
-public class Stats : ScriptableObject
+public abstract class Stats : ScriptableObject
 {
     [Header("Stats")]
-    [Tooltip("Attack of the character")]
-    public int attack = 0;
     [Tooltip("Maximum health of the character")]
     public int maximumHealth = 0;
     [Tooltip("Type of the character, aka what element does the character belong to")]
     public SkillData.SkillType type;
-    [Tooltip("Stat modifiers of the character")]
+    [Tooltip("Stat modifiers of the player character")]
     public CharacterStat[] characterStat = new CharacterStat[4];
 
     [System.Serializable]
