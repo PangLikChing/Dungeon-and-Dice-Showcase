@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1615473323622852132}
   - component: {fileID: 1615473323622852130}
   - component: {fileID: 1615473323622852131}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Skill Description Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,8 +146,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1615473323688994324}
   - component: {fileID: 1615473323688994323}
-  m_Layer: 0
-  m_Name: Skill
+  m_Layer: 5
+  m_Name: Skill Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,6 +186,7 @@ MonoBehaviour:
   dieSize: 0
   numberOfDie: 1
   currentSkillLevel: 1
+  diceRollTray: {fileID: 0}
   skillNameText: {fileID: 1615473324161524858}
   skillDesriptionText: {fileID: 1615473323622852131}
 --- !u!1 &1615473324161524860
@@ -199,7 +200,7 @@ GameObject:
   - component: {fileID: 1615473324161524859}
   - component: {fileID: 1615473324161524857}
   - component: {fileID: 1615473324161524858}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Skill Name Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +335,7 @@ GameObject:
   - component: {fileID: 1615473324515291158}
   - component: {fileID: 1615473324515291159}
   - component: {fileID: 1615473324515291157}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Skill Dropbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

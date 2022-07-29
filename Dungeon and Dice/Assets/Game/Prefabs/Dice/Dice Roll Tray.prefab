@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9019849498365207674}
   - component: {fileID: 9019849498365207675}
   - component: {fileID: 9019849498365207652}
+  - component: {fileID: 7618530612081312823}
   m_Layer: 5
   m_Name: Dice Roll Tray
   m_TagString: Untagged
@@ -113,18 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334840e3552d8014f9e1cca10232f3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDiceRollTrayReference:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: d6f72c29df490464892ac2ec86378598, type: 2}
-        m_TargetAssemblyTypeName: TransformEventChannel, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!225 &7618530612081312823
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019849498365207673}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
