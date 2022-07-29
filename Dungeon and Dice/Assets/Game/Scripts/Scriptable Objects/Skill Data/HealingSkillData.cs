@@ -6,7 +6,7 @@ using UnityEngine;
 /// Scriptable object that holds the starting data of a healing skill
 /// </summary>
 [CreateAssetMenu(fileName = "Healing Skill Data", menuName = "Skill/Healing Skill Data")]
-public class HealingSkillData : SkillData
+public class HealingSkillData : SupportSkillData
 {
     // Method to execute the healing skill
     public override void ExecuteSkill(Character source, Character target, int healing)

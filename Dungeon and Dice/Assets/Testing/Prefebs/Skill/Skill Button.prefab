@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5a307523cea1b4c9ca2de0c0a6b913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 11400000, guid: 9e68f7fcd7a5a7f48b0943a58cf62dcb, type: 2}
+  skillData: {fileID: 0}
   dieSize: 0
   numberOfDie: 1
   currentSkillLevel: 1

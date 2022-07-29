@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dd9f05dc62c7f94ab3e1b2da81ed8f7, type: 3}
-  m_Name: Cure Wounds
+  m_Name: Second Wind
   m_EditorClassIdentifier: 
-  skillName: Cure Wounds
+  skillName: Second Wind
   isAOE: 0
-  modifier: 3
+  modifier: 0
   skillType: 3
   skillLevel:
   - diceNumber: 1
-    dieSize: 2
+    dieSize: 1
   - diceNumber: 2
-    dieSize: 2
+    dieSize: 1
   - diceNumber: 3
-    dieSize: 2
+    dieSize: 1
+  - diceNumber: 4
+    dieSize: 1
+  - diceNumber: 5
+    dieSize: 1
+  targetSelfOnly: 1

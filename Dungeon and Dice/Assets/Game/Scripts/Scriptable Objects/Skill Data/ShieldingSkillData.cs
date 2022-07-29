@@ -6,7 +6,7 @@ using UnityEngine;
 /// Scriptable object that holds the starting data of a shielding skill
 /// </summary>
 [CreateAssetMenu(fileName = "Shielding Skill Data", menuName = "Skill/Shielding Skill Data")]
-public class ShieldingSkillData : SkillData
+public class ShieldingSkillData : SupportSkillData
 {
     // Method to execute the shielding skill
     public override void ExecuteSkill(Character source, Character target, int shielding)

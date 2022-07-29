@@ -40,6 +40,20 @@ public class SkillButton : MonoBehaviour
                 // If the skill is a healing or shielding skill
                 else if (skill.skillData.GetType() == typeof(HealingSkillData) || skill.skillData.GetType() == typeof(ShieldingSkillData))
                 {
+                    Debug.Log("Support Skill");
+                    // Cast the skill as a support skill
+                    SupportSkillData supportSkillData = (SupportSkillData)skill.skillData;
+
+                    // If the skill can only target the caster
+                    // If the healing skill can only target the caster
+                    if (supportSkillData.targetSelfOnly == true)
+                    {
+                        Debug.Log("Success");
+
+                        // Try to set the target at the caster in the game manager
+                        TryChangeTarget.Invoke(GameManager.Instance.currentPlayer.transform);
+                    }
+
                     // If there is no player target yet
                     if (GameManager.Instance.currentPlayerTarget == null)
                     {
